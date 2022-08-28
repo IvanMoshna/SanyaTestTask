@@ -3,6 +3,10 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) throws IOException {
+
+        boolean isTypeSelected = false;
+        boolean isSortingSelected = false;
+
         //chitaem s konsoli adress
         Scanner in = new Scanner(System.in);
         System.out.print("Enter name of directory: ");
@@ -17,27 +21,54 @@ public class Main {
         subStr = path.split(" ");
 
 
-        //TODO: напиздел я сам себе, короче когда парсим, нужно смотреть первый символ, если это "-", значит это флаг, если не минус, значит путь,
-        //потому что 2 флага может идти подряд
-        //может, конечно, есть какие то более логичные и лучше работающие способы, но на ум сразу только такая идея пришла.
-        //плюс это тестовое на курсы блять, чо они хотят, файл считал и заебись.
-
-        //TODO: тут еще можно смотреть, что скажем у нас всего одна буква, если больше, то писать, шо Миша все хуйня, давай по новой
         for (int i=0; i < subStr.length; i++) {
-            if(subStr[i].substring(0, 1).equals("-")){
-                switch (subStr[i].substring(1, 2)){
-                    case "i":
-                        System.out.println("Пацаны тут интов нам привезли");
-                        break;
-                    case "s":
-                        System.out.println("Разгружай вагон со стрингами");
-                        break;
-                    case "a":
-                        System.out.println("Давай вира");
-                        break;
-                    case "d":
-                        System.out.println("Майна, майна!");
-                        break;
+            if(subStr[i].substring(0, 1).equals("-")) {
+                if (subStr[i].length() > 2) {
+                    System.out.println("Команда введена неверно, попробуйте еще раз");
+                    //TODO: по новой запускать, подумать как сделать.
+                } else {
+                    switch (subStr[i].substring(1, 2)) {
+                        case "i":
+                            if(!isTypeSelected) {
+                                System.out.println("Пацаны тут интов нам привезли");
+                                isTypeSelected=true;
+                                break;
+                            } else {
+                                System.out.println("Ты по-моему что-то перепутал");
+                                //TODO: запускай по новой
+                                break;
+                            }
+                        case "s":
+                            if(!isTypeSelected) {
+                                System.out.println("Разгружай вагон со стрингами");
+                                isTypeSelected=true;
+                                break;
+                            } else {
+                                System.out.println("Ты по-моему что-то перепутал");
+                                //TODO: запускай по новой
+                                break;
+                            }
+                        case "a":
+                            if(!isSortingSelected) {
+                                System.out.println("Давай вира");
+                                isSortingSelected=true;
+                                break;
+                            } else {
+                                System.out.println("Ты по-моему что-то перепутал");
+                                //TODO: запускай по новой
+                                break;
+                            }
+                        case "d":
+                            if(!isSortingSelected) {
+                                System.out.println("Майна, майна!");
+                                isSortingSelected=true;
+                                break;
+                            } else {
+                                System.out.println("Ты по-моему что-то перепутал");
+                                //TODO: запускай по новой
+                                break;
+                            }
+                    }
                 }
             }
         }
