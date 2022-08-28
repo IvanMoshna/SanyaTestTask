@@ -23,7 +23,7 @@ public class FileService {
         return file;
     }
 
-    public void copyFileContent(File fileFrom, File fileTo) throws IOException {
-        Files.copy(Paths.get(fileFrom.getPath()), new FileOutputStream(fileTo));
+    public void copyFileContent(String pathFileFrom, String pathFileTo) throws IOException {
+        Files.copy(Paths.get(pathFileFrom), new FileOutputStream(pathFileTo));
     }
 }
