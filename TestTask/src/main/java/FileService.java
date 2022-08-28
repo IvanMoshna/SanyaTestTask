@@ -7,7 +7,7 @@ import java.nio.file.Paths;
 public class FileService {
 
     public File getFileFromPath(String pathToFile) {
-        //TODO: proverit' chto file syshestvuet
+        //TODO: проверить, что файл существует
         File file = new File(pathToFile);
         boolean isExist = file.exists();
         if (isExist) {
@@ -17,8 +17,8 @@ public class FileService {
         }
     }
 
-    public File createFile() throws IOException {
-        File file = new File("C:\\Users\\moshn\\Downloads\\Telegram Desktop\\TestTask\\TestTask\\src\\main\\resources", "out.txt");
+    public File createFile(String pathToFile) throws IOException {
+        File file = new File(pathToFile);
         file.createNewFile();
         return file;
     }
